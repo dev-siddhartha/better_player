@@ -1228,6 +1228,7 @@ class BetterPlayerController {
     var headers = betterPlayerDataSource!.headers ?? {};
     if (headerLoaded && headers.containsKey('Authorization')) {
       headers.removeWhere((key, value) => key == "Authorization");
+      headers.removeWhere((key, value) => key == "fingerprint");
     }
 
     headerLoaded = true;
