@@ -1227,7 +1227,7 @@ class BetterPlayerController {
 
     var headers = betterPlayerDataSource!.headers ?? {};
     var url = betterPlayerDataSource!.url;
-    if (headerLoaded && headers.containsKey('Authorization')) {
+    if (!url.contains("https://dev-system.ambition.guru/")) {
       headers.removeWhere((key, value) => key == "Authorization");
       headers.removeWhere((key, value) => key == "fingerprint");
     }
