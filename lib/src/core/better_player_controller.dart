@@ -22,8 +22,6 @@ class BetterPlayerController {
   static const String _dataSourceParameter = "dataSource";
   static const String _authorizationHeader = "Authorization";
 
-  bool headerLoaded = false;
-
   ///General configuration used in controller instance.
   final BetterPlayerConfiguration betterPlayerConfiguration;
 
@@ -1223,11 +1221,7 @@ class BetterPlayerController {
   ///Build headers map that will be used to setup video player controller. Apply
   ///DRM headers if available.
   Map<String, String?> _getHeaders() {
-    // final headers = betterPlayerDataSource!.headers ?? {};
-
-    var headers = betterPlayerDataSource!.headers ?? {};
-    if (headerLoaded) headers = {};
-    headerLoaded = true;
+    final headers = betterPlayerDataSource!.headers ?? {};
 
     if (betterPlayerDataSource?.drmConfiguration?.drmType ==
             BetterPlayerDrmType.token &&
