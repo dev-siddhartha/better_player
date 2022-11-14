@@ -1226,7 +1226,10 @@ class BetterPlayerController {
     // final headers = betterPlayerDataSource!.headers ?? {};
 
     var headers = betterPlayerDataSource!.headers ?? {};
-    if (headerLoaded) headers = {};
+    if (headerLoaded && headers.containsKey('Authorization')) {
+      headers.removeWhere((key, value) => key == "Authorization");
+    }
+
     headerLoaded = true;
 
     if (betterPlayerDataSource?.drmConfiguration?.drmType ==
